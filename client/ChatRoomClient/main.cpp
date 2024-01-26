@@ -1,8 +1,41 @@
+//#include "mainwindow.h"
+#include "src/ui/loginform.h"
+#include "src/ui/mainform.h"
+#include "src/model/user.h"
+
+#include <QApplication>
+
+#include <QDebug>
+#include <QJsonArray>
+
+#include <QWidget>
+#include <QTcpSocket>
+#include <QHostAddress>
+#include <QMessageBox>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QTime>
+
 #include <QtCore/QCoreApplication>
+#include <QtMultimedia/QMediaPlayer>
+
+//全局变量 保存socket username password
+User user;
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    QApplication a(argc, argv);
+
+
+    QMediaPlayer * player = new QMediaPlayer;
+    player->setMedia(QUrl("qrc:/media/radio/fla2.mp3"));
+    player->setVolume(5);
+    player->play();
+
+    LoginForm l;
+    l.show();
+
+
 
     return a.exec();
 }

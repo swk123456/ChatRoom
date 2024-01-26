@@ -5,14 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Form Files">
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
@@ -21,11 +13,232 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{f7d00a51-7b04-4709-bfde-efef8f240671}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="model">
+      <UniqueIdentifier>{bfd8e81c-78b6-43e9-a415-116f5f415afa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\ui\addfrom.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\chatform.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\chatgroform.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\collapseview.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\collapseviewitem.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\colorpickform.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\creategroup.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\friitem.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\groupitem.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\grouplist.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\litteriem.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\loginform.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\mainform.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\memberform.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\moveableframelesswindow.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\msg.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\noticeitem.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\noticelist.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\searchfrom.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\searchgroform.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\slidewindow.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\config.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\singleton.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\socket.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\user.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="src\ui\addfrom.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\chatform.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\chatgroform.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\collapseview.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\collapseviewitem.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\colorpickform.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\creategroup.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\friitem.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\groupitem.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\grouplist.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\litteriem.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\loginform.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\mainform.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\memberform.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\moveableframelesswindow.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\msg.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\noticeitem.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\noticelist.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\searchfrom.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\searchgroform.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+    <QtMoc Include="src\ui\slidewindow.h">
+      <Filter>UI</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="src\ui\addfrom.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\chatform.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\chatgroform.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\collapseview.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\collapseviewitem.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\colorpickform.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\creategroup.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\friitem.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\groupitem.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\grouplist.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\litteriem.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\loginform.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\mainform.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\memberform.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\msg.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\noticeitem.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\noticelist.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\searchfrom.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\searchgroform.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+    <QtUic Include="src\ui\slidewindow.ui">
+      <Filter>UI</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\model\config.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\singleton.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\socket.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\user.h">
+      <Filter>model</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
