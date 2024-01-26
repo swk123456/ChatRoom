@@ -5,14 +5,13 @@ use ChatRoom;
 drop table if exists Chat_Member_Information;
 create table Chat_Member_Information/*用户信息*/
 (
-	Member_ID bigint(20) not null AUTO_INCREMENT,/*自增ID*/
+	Member_UserID bigint(20) not null AUTO_INCREMENT,/*用户ID自增*/
 	Member_Password varchar(64) not null,/*用户密码*/
 	Member_Nickname varchar(64) not null,/*用户昵称*/
-    Member_UserID bigint(20) not null,/*用户ID*/
+	Member_Status int default 0,/*用户状态*/
 	Member_Photo varchar(64) default null,
     Member_Signature varchar(64) default null,
-	constraint PK_Member_Information primary key(Member_ID),
-    constraint UK_Member_Information unique key(Member_UserID)
+	constraint PK_Member_Information primary key(Member_UserID)
 );
 
 drop table if exists Chat_Room_Information;

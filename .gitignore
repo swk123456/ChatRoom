@@ -1,4 +1,9 @@
-﻿
+﻿/.vscode
+
 /client/ChatRoomClient/.vs
 /client/ChatRoomClient/Release
 /client/ChatRoomClient/Debug
+
+/server/*.o
+/server/database/*.o
+/server/database/test
