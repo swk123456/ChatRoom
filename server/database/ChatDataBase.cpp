@@ -98,7 +98,7 @@ void ChatDataBase::my_database_get_group_member(string name, string &s)
 void ChatDataBase::my_database_user_password(string name, string password,int &userid)
 {
     char sql[1024] = {0};
-    sprintf(sql, "insert into Chat_Member_Information (Member_Nickname,Member_Password,Member_Status,Member_Photo,Member_Signature) values('%s','%s','%d','%s','%s');", name.c_str(),password.c_str(),0,":/media/person/media/person/2.jpg","happy");
+    sprintf(sql, "insert into Chat_Member_Information (Member_Nickname,Member_Password,Member_Status,Member_Photo,Member_Signature) values('%s','%s','%d','%s','%s');", name.c_str(),password.c_str(),0,":/media/person/2.jpg","happy");
     if (mysql_query(mysql,sql))
     {
         cout<<"Query Error: "<<mysql_error(mysql);
@@ -187,7 +187,7 @@ void ChatDataBase::my_database_add_new_friend_notification(int n1, int n2)
     }
     char sql[1024] = {0};
     //n1 发送 好友请求  n2 接受
-    sprintf(sql,"insert into Chat_Friend_Notification (Member_UserID,Friend_UserID) values('%d','%d')",n1,n2);
+    sprintf(sql,"insert into Chat_Friend_Notification (Member_UserID,Friend_UserID) values('%d','%d');",n1,n2);
     if (mysql_query(mysql, sql) != 0)
     {
         cout << "insert notification error" << endl;
@@ -294,7 +294,7 @@ void ChatDataBase::my_database_user_add_group_notification(int user_id,int group
 
 void ChatDataBase::my_database_friend_list(vector<User> &friendlist,vector<int> &friend_message, int userid) {
     char sql[1024] = {0};
-    sprintf(sql, "select Friend_UserID,Member_Nickname,Member_Status,Member_Photo,Member_Signature,Msg_Num from Chat_Friend, Chat_Member_Information where Chat_Friend.Member_UserID = '%d' and Chat_Friend.Friend_UserID = Chat_Member_Information.Member_UserID", userid);
+    sprintf(sql, "select Friend_UserID,Member_Nickname,Member_Status,Member_Photo,Member_Signature,Msg_Num from Chat_Friend, Chat_Member_Information where Chat_Friend.Member_UserID = '%d' and Chat_Friend.Friend_UserID = Chat_Member_Information.Member_UserID;", userid);
     if (mysql_query(mysql, sql) != 0)
     {
         cout << "mysql_query error" << endl;
@@ -381,7 +381,7 @@ bool ChatDataBase::my_database_group_id_exist(int groupid) {
 
 void ChatDataBase::my_database_user_information(User &ur, int userid) {
     char sql[1024] = {0};
-    sprintf(sql, "select Member_UserID,Member_Nickname,Member_Status,Member_Photo,Member_Signature from Chat_Member_Information where Member_UserID='%d'", userid);
+    sprintf(sql, "select Member_UserID,Member_Nickname,Member_Status,Member_Photo,Member_Signature from Chat_Member_Information where Member_UserID='%d';", userid);
     if (mysql_query(mysql,sql))
     {
         cout<<"Query Error: "<<mysql_error(mysql);
@@ -436,7 +436,7 @@ void ChatDataBase::my_database_chat(Message ms) {
 
 void ChatDataBase::my_database_chat_search(vector<Message> &messageList, int senderid, int targetid) {
     char sql[1024] = {0};
-    sprintf(sql, "select Sender_UserID,Target_UserID,Message_Information,Message_Time,Message_Type from Chat_Message where (Sender_UserID='%d' and Target_UserID='%d')or(Sender_UserID='%d' and Target_UserID='%d')", senderid,targetid,targetid,senderid);
+    sprintf(sql, "select Sender_UserID,Target_UserID,Message_Information,Message_Time,Message_Type from Chat_Message where (Sender_UserID='%d' and Target_UserID='%d')or(Sender_UserID='%d' and Target_UserID='%d') ORDER BY Message_Time ASC;", senderid,targetid,targetid,senderid);
     if (mysql_query(mysql, sql) != 0)
     {
         cout << "mysql_query error" << endl;
@@ -518,7 +518,7 @@ void ChatDataBase::my_database_add_new_friend(int sender_id, int receive_id) {
 void ChatDataBase::get_all_add_friend_notification(int userId, vector<User> &users)
 {
     char sql[1024] = {0};
-    sprintf(sql, "select Friend_UserID,Member_Nickname,Member_Status,Member_Photo,Member_Signature from Chat_Friend_Notification, Chat_Member_Information where Chat_Friend_Notification.Member_UserID = '%d' and Chat_Friend_Notification.Friend_UserID = Chat_Member_Information.Member_UserID", userId);
+    sprintf(sql, "select Chat_Friend_Notification.Member_UserID,Member_Nickname,Member_Status,Member_Photo,Member_Signature from Chat_Friend_Notification, Chat_Member_Information where Chat_Friend_Notification.Friend_UserID = '%d' and Chat_Friend_Notification.Member_UserID = Chat_Member_Information.Member_UserID;", userId);
     if (mysql_query(mysql, sql) != 0)
     {
         cout << "mysql_query error" << endl;
@@ -614,7 +614,7 @@ void ChatDataBase::my_database_search_group_notification(int groupownerid, vecto
 void ChatDataBase::my_database_group_owner_add_user(int groupid, int userid) {
     char sql[1024];
     memset(sql,0,sizeof(sql));
-    sprintf(sql,"insert into Chat_Room_Member(Room_ID,Member_UserID) values('%d','%d')",groupid,userid);
+    sprintf(sql,"insert into Chat_Room_Member(Room_ID,Member_UserID) values('%d','%d');",groupid,userid);
     if(mysql_query(mysql,sql) !=0)
     {
         cout<<"insert failed"<<endl;
@@ -627,7 +627,7 @@ void ChatDataBase::my_database_group_owner_add_user(int groupid, int userid) {
 void ChatDataBase::my_database_search_group(Group &gp, int groupid)
 {
     char sql[1024] = {0};
-    sprintf(sql, "select Room_ID,Room_Nickname,Room_OwnerID from Chat_Room_Information where Room_ID='%d'", groupid);
+    sprintf(sql, "select Room_ID,Room_Nickname,Room_OwnerID from Chat_Room_Information where Room_ID='%d';", groupid);
     if (mysql_query(mysql,sql))
     {
         cout<<"Query Error: "<<mysql_error(mysql);
@@ -705,7 +705,7 @@ void ChatDataBase::my_database_get_group(vector<Group> &vgp, vector<int> &group_
 void ChatDataBase::my_database_get_group_user(int groupid, vector<User> &ur)
 {
     char sql[1024] = {0};
-    sprintf(sql, "select Chat_Room_Member.Member_UserID,Member_Nickname,Member_Status,Member_Photo,Member_Signature from Chat_Room_Member, Chat_Member_Information where Chat_Room_Member.Room_ID = '%d' and Chat_Room_Member.Member_UserID = Chat_Member_Information.Member_UserID", groupid);
+    sprintf(sql, "select Chat_Room_Member.Member_UserID,Member_Nickname,Member_Status,Member_Photo,Member_Signature from Chat_Room_Member, Chat_Member_Information where Chat_Room_Member.Room_ID = '%d' and Chat_Room_Member.Member_UserID = Chat_Member_Information.Member_UserID;", groupid);
     if (mysql_query(mysql, sql) != 0)
     {
         cout << "mysql_query error" << endl;
@@ -746,7 +746,7 @@ void ChatDataBase::my_database_get_group_user(int groupid, vector<User> &ur)
 void ChatDataBase::my_database_group_msg_insert(Message ms)
 {
     char sql[1024] = {0};
-    sprintf(sql, "INSERT into Chat_Group_Message(Sender_UserID,Room_ID,Message_Information,Message_Time,Message_Type) VALUES('%d','%d','%s','%s','%d');", ms.sendId,ms.receiveId,ms.content.c_str(),ms.time.c_str(),ms.type);
+    sprintf(sql, "INSERT into Chat_Group_Message(Member_UserID,Room_ID,Message_Information,Message_Time,Message_Type) VALUES('%d','%d','%s','%s','%d');", ms.sendId,ms.receiveId,ms.content.c_str(),ms.time.c_str(),ms.type);
     if (mysql_query(mysql, sql) != 0)
     {
         cout << "mysql_insert error" << endl;
@@ -778,7 +778,7 @@ void ChatDataBase::my_database_group_msg_insert(Message ms)
 void ChatDataBase::my_database_get_group_chat_msg(int groupid,int userid,vector<Message> &ms)
 {
     char sql[1024] = {0};
-    sprintf(sql, "select Member_UserID,Room_ID,Message_Information,Message_Time,Message_Type from Chat_Group_Message where Member_UserID='%d' and Room_ID='%d'",userid,groupid);
+    sprintf(sql, "select Member_UserID,Room_ID,Message_Information,Message_Time,Message_Type from Chat_Group_Message where Room_ID='%d' ORDER BY Message_Time ASC;",groupid);
     if (mysql_query(mysql, sql) != 0)
     {
         cout << "mysql_query error" << endl;

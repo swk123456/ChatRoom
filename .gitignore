@@ -5,5 +5,6 @@
 /client/ChatRoomClient/Debug
 
 /server/*.o
+/server/server
 /server/database/*.o
 /server/database/test
