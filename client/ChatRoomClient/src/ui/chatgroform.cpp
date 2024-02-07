@@ -55,7 +55,7 @@ void ChatGroForm::server_reply()
 
         ui->widget_msgs->layout()->addWidget(new Msg(member[user.obj.value("sendId").toInt()],
                                                      user.obj.value("content").toString(),
-                                                     user.obj.value("time").toString(),
+                                                     "[" + user.obj.value("time").toString() + "]",
                                                      this));
         ui->scrollArea->verticalScrollBar()->setValue(ui->scrollArea->verticalScrollBar()->maximum());
         user.clearobj();
@@ -79,7 +79,7 @@ void ChatGroForm::server_reply()
             QJsonObject msg = (*item).toObject();
             ui->widget_msgs->layout()->addWidget(new Msg(member[msg.value("sendId").toInt()],
                                                          msg.value("content").toString(),
-                                                         msg.value("time").toString(),
+                                                         "[" + msg.value("time").toString() + "]",
                                                          this));
         }
         ui->scrollArea->verticalScrollBar()->setValue(ui->scrollArea->verticalScrollBar()->maximum());
@@ -92,7 +92,7 @@ void ChatGroForm::on_pushButton_send_clicked()
 {
     QString msg = ui->textEdit_input->toPlainText();
     QDateTime current_date_time = QDateTime::currentDateTime();
-    QString current_date = current_date_time.toString("[yyyy/MM/dd hh:mm:ss]");
+    QString current_date = current_date_time.toString("yyyy/MM/dd hh:mm:ss");
 
     QJsonObject obj;
     obj.insert("cmd", "sendGroupMessage");
@@ -100,9 +100,10 @@ void ChatGroForm::on_pushButton_send_clicked()
     obj.insert("groupId",  id);
     obj.insert("content", msg);
     obj.insert("time", current_date);
+    obj.insert("type", 0);
     user.send(obj);
 
-    ui->widget_msgs->layout()->addWidget(new Msg(user.friends[user.userId], msg, current_date,this));
+    ui->widget_msgs->layout()->addWidget(new Msg(user.friends[user.userId], msg, "[" + current_date + "]", this));
     ui->scrollArea->verticalScrollBar()->setValue(ui->scrollArea->verticalScrollBar()->maximum());
     ui->textEdit_input->clear();
 }

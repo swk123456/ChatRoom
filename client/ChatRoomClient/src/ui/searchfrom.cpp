@@ -58,7 +58,7 @@ void SearchFrom::server_reply()
 
             if(user.obj.value("already").toBool() == true)
             {
-                ui->pushButton_sendadd->setText("已为好友");
+                ui->pushButton_sendadd->setText(QString::fromLocal8Bit("已为好友"));
                 ui->pushButton_sendadd->setEnabled(false);
                 ui->pushButton_sendadd->setStyleSheet("backgroud-color:rgb(150,150,150);");
             }

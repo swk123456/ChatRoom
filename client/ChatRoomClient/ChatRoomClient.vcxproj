@@ -20,7 +20,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\model\config.cpp" />
     <ClCompile Include="src\model\singleton.cpp" />
-    <ClCompile Include="src\model\socket.cpp" />
     <ClCompile Include="src\model\user.cpp" />
     <ClCompile Include="src\ui\addfrom.cpp" />
     <ClCompile Include="src\ui\chatform.cpp" />
@@ -132,8 +131,10 @@
   <ItemGroup>
     <ClInclude Include="src\model\config.h" />
     <ClInclude Include="src\model\singleton.h" />
-    <ClInclude Include="src\model\socket.h" />
     <ClInclude Include="src\model\user.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="rs\rs.qrc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4CD5A01A-01FC-4799-A432-DE41E716AAD9}</ProjectGuid>
@@ -183,6 +184,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile />
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>

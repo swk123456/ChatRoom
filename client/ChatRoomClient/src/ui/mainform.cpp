@@ -76,6 +76,10 @@ void MainForm::server_reply()
     {
         user.clearobj();
     }
+    else if (cmd == "sendMessage-reply")
+    {
+        user.clearobj();
+    }
     else if(cmd == "sendGroupMessage-reply")
     {
         user.clearobj();

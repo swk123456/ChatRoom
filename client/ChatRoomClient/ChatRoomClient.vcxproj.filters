@@ -90,9 +90,6 @@
     <ClCompile Include="src\model\singleton.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\socket.cpp">
-      <Filter>model</Filter>
-    </ClCompile>
     <ClCompile Include="src\model\user.cpp">
       <Filter>model</Filter>
     </ClCompile>
@@ -234,11 +231,11 @@
     <ClInclude Include="src\model\singleton.h">
       <Filter>model</Filter>
     </ClInclude>
-    <ClInclude Include="src\model\socket.h">
-      <Filter>model</Filter>
-    </ClInclude>
     <ClInclude Include="src\model\user.h">
       <Filter>model</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="rs\rs.qrc" />
   </ItemGroup>
 </Project>

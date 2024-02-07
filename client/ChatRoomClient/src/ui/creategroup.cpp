@@ -32,7 +32,7 @@ void CreateGroup::on_pushButton_create_clicked()
     obj.insert("groupName", gn);
     user.send(obj);
 
-    ui->pushButton_create->setText("创建成功");
+    ui->pushButton_create->setText(QString::fromLocal8Bit("创建成功"));
     ui->pushButton_create->setEnabled(false);
     ui->pushButton_create->setStyleSheet("backgroud-color:rgb(150,150,150);");
 

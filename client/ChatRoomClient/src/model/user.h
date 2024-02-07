@@ -1,5 +1,4 @@
-#ifndef TCPSOCKET_H
-#define TCPSOCKET_H
+#pragma once
 
 #include <QWidget>
 
@@ -68,7 +67,3 @@ public:
     std::map<int, fri>friends;
     std::map<int, gro>groups;
 };
-
-
-
-#endif // TCPSOCKET_H

@@ -33,7 +33,7 @@ void AddFrom::server_reply()
     if (cmd == "register-reply")
     {
         ui->label_s->setVisible(true);
-        ui->label_s->setText(tr("注册成功, 账号id为:%1").arg(user.obj.value("userId").toInt()));
+        ui->label_s->setText(QString::fromLocal8Bit("注册成功,账号为:%1").arg(user.obj.value("userId").toInt()));
         ui->label_no->setText("");
         user.clearobj();
     }

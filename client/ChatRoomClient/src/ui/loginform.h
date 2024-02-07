@@ -4,6 +4,7 @@
 #include "moveableframelesswindow.h"
 #include "../model/user.h"
 #include "addfrom.h"
+#include "mainform.h"
 
 #include <QWidget>
 #include <QTcpSocket>
@@ -64,6 +65,8 @@ private:
     void client_login_handler(int, QJsonObject);
 
     Ui::LoginForm *ui;
+
+    MainForm mainform;
 };
 
 #endif // LOGINFORM_H
