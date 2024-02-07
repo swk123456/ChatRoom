@@ -328,9 +328,8 @@ void conn::do_add_friend(const Json::Value &root) {
         conns[sock].m_write_buf[conns[sock].reply.size()] = '\0';
         printf("add friend send to receiveer:\n %s", conns[sock].m_write_buf);
         modfd(m_epollfd, conns[sock].m_sockfd, EPOLLOUT);
-    } else {//不在线，向数据库中插入一条记录
-        db_conn->my_database_add_new_friend_notification(sendId, receiveId);
     }
+    db_conn->my_database_add_new_friend_notification(sendId, receiveId);//不论是否在线，向数据库中插入一条记录
 
     //向发送者回应消息
     Json::Value ret;
@@ -496,6 +495,7 @@ void conn::do_send_group_message(const Json::Value &root) {
     int groupId = root["groupId"].asInt();
     string content = root["content"].asString();
     string time = root["time"].asString();
+    int type = root["type"].asInt();
 
     ChatDataBase *db_conn;
     connectionRAII connRAII(db_conn, db_pool);
@@ -505,10 +505,15 @@ void conn::do_send_group_message(const Json::Value &root) {
     msg.receiveId = groupId;
     msg.content = content;
     msg.time = time;
+    msg.type = type;
     db_conn->my_database_group_msg_insert(msg);//在数据库的消息记录表中插入一条数据
     vector<User> user;
     db_conn->my_database_get_group_user(groupId, user);//通过群id查询群中所有成员的信息，后期可以修改为获得在线的群成员
     for (auto u: user) {
+        if(u.userId == sendId)
+        {
+            continue;
+        }
         int sock = -1;
         if (isOnline(u.userId, sock)) {
             Json::Value ret;
@@ -647,7 +652,7 @@ PROCESS_CODE conn::process_read() {
         
 
         Json::Value temp;
-        temp["cmd"] = "NONE";
+        temp["cmd"] = "sendMessage-reply";
         reply = temp.toStyledString();
         memcpy(m_write_buf, reply.c_str(), reply.size());
         m_write_buf[reply.size()] = '\0';
